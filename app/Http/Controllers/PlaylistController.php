@@ -28,7 +28,7 @@ class PlaylistController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'tag' => 'required'
+            'tag' => 'required',
         ]);
 
         Playlist::create([
@@ -45,7 +45,7 @@ class PlaylistController extends Controller
     public function show(Playlist $playlist)
     {
         $allSongs = Song::all();
-        return view('playlist.show');
+        return view('playlist.show', ['playlist'=>$playlist, 'allSongs'=>$allSongs]);
     }
 
     /**
