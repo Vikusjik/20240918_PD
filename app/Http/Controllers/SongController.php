@@ -45,7 +45,7 @@ class SongController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Song  $song)
+    public function show(Song $song)
     {
        return view('song.show', ['song' => $song]);
     }
@@ -94,6 +94,6 @@ class SongController extends Controller
 
         $song->delete();
 
-        return redirect('/song')->with('success', 'Your song has been deleted!'); //--------------Šo vajadzēs samainīt!!!!!!
+        return redirect('/song')->with('success', 'Song deleted successfully!'); 
     }
 }
