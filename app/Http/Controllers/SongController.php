@@ -10,7 +10,7 @@ class SongController extends Controller
     
     public function index()
     {
-        $songs = Song::limit(2);
+        $songs = Song::all();
         return view('song.index', compact('songs'));
     }
 
@@ -39,13 +39,13 @@ class SongController extends Controller
             'genre' => $request->input('genre')
         ]);
 
-        return redirect('/song'); //--------------Šo vajadzēs samainīt!!!!!!
+        return redirect('/song')->with('success', 'Song created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Song $song)
+    public function show(Song  $song)
     {
        return view('song.show', ['song' => $song]);
     }
