@@ -94,6 +94,6 @@ class SongController extends Controller
 
         $song->delete();
 
-        return redirect('/song'); //--------------Šo vajadzēs samainīt!!!!!!
+        return redirect('/song')->with('success', 'Your song has been deleted!'); //--------------Šo vajadzēs samainīt!!!!!!
     }
 }
