@@ -8,11 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::delete('playlist/{playlist}/song/{song}',[PlaylistController::class, 'removeSong'])->name('playlist.removesong');
+// Route::post('/playlist/{playlist}/song', [PlaylistController::class, 'addsong']->name('playlist.addsong'));
+Route::post('playlist/{playlist}/addsong',[PlaylistController::class, 'addSong'])->name('playlist.addsong');
 
 Route::resource('playlist', PlaylistController::class);
-Route::post('playlist/{playlist}/addsong',[PlaylistController::class, 'addSong'])->name('playlist.addsong');
-Route::post('playlist/{playlist}/removesong',[PlaylistController::class, 'removeSong'])->name('playlist.removesong');
 Route::resource('song', SongController::class);
+
 
 
 Route::get('/dashboard', function () {

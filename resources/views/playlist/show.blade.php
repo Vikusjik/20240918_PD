@@ -31,9 +31,9 @@
                                 <td class="border px-4 py-2">
                                     {{ $song->title }} | {{ $song->artist }}
 
-                                    <form action="{{ route('playlist.removesong', $playlist->id) }}" method="POST" class="inline-block">
+                                    <form action="{{ route('playlist.removesong', $playlist->id, $song->id) }}" method="POST" class="inline-block">
                                         @csrf
-                                        <input type="hidden" name="song" value="{{ $song->id }}">
+                                        @method('DELETE')
                                         <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
                                             Remove
                                         </button>
@@ -49,7 +49,9 @@
                     <label for="song">Choose a song:</label>
                     <select name="song" id="song">
                         @foreach($allSongs as $song)
+                        @if(!$playlist->songs->contains($song->id))
                             <option value="{{ $song->id }}">{{ $song->title }}</option>
+                            @endif
                         @endforeach
                     </select>
                     <button type="submit" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
